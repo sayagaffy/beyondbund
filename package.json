@@ -71,15 +71,11 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.60.1",
-    "@swc/core-win32-x64-msvc": "^1.15.1",
-    "@tailwindcss/oxide-win32-x64-msvc": "^4.2.2",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react-swc": "^4.1.0",
     "autoprefixer": "^10.4.19",
-    "lightningcss-win32-x64-msvc": "^1.32.0",
     "postcss": "^8.4.38",
     "tailwindcss": "3.4.1",
     "typescript": "^5.8.2",
