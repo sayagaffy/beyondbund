@@ -1,8 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import LandingButton from "./LandingButton";
+import { urlForImage } from "../../lib/sanity/client";
+import type { SiteSettings } from "../../lib/sanity/types";
+import { DEFAULT_HERO } from "../../lib/siteDefaults";
 
-export default function HeroSection() {
+type HeroSectionProps = {
+  settings?: SiteSettings["hero"];
+};
+
+export default function HeroSection({ settings }: HeroSectionProps) {
   const bgRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
 
@@ -22,7 +29,24 @@ export default function HeroSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const headline = ["Discover the", "Unseen China."];
+  const eyebrow = settings?.eyebrow?.trim() || DEFAULT_HERO.eyebrow;
+  const headlineLine1 =
+    settings?.headlineLine1?.trim() || DEFAULT_HERO.headlineLine1;
+  const headlineLine2 =
+    settings?.headlineLine2?.trim() || DEFAULT_HERO.headlineLine2;
+  const italicLine2 =
+    settings?.headlineLine2Italic ?? DEFAULT_HERO.headlineLine2Italic;
+  const subheadline =
+    settings?.subheadline?.trim() || DEFAULT_HERO.subheadline;
+  const ctaLabel = settings?.ctaLabel?.trim() || DEFAULT_HERO.ctaLabel;
+  const heroImageUrl =
+    urlForImage(settings?.backgroundImage)
+      ?.width(2400)
+      .height(1600)
+      .fit("crop")
+      .url() || DEFAULT_HERO.backgroundImageUrl;
+
+  const headline = [headlineLine1, headlineLine2];
 
   return (
     <section
@@ -41,10 +65,7 @@ export default function HeroSection() {
       >
         <div
           className="bg-cover bg-center w-full h-full ken-burns"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&q=80')",
-          }}
+          style={{ backgroundImage: `url('${heroImageUrl}')` }}
         />
         {/* Deep gradient vignette */}
         <div
@@ -80,7 +101,7 @@ export default function HeroSection() {
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          Private China Expeditions
+          {eyebrow}
         </motion.p>
 
         {/* Main headline */}
@@ -102,7 +123,10 @@ export default function HeroSection() {
               >
                 <motion.span
                   className="block"
-                  style={{ fontStyle: lineIdx === 1 ? "italic" : "normal" }}
+                  style={{
+                    fontStyle:
+                      lineIdx === 1 && italicLine2 ? "italic" : "normal",
+                  }}
                   initial={{ y: "110%", filter: "blur(8px)" }}
                   animate={loaded ? { y: "0%", filter: "blur(0px)" } : {}}
                   transition={{
@@ -133,8 +157,7 @@ export default function HeroSection() {
             className="font-crimson text-lg italic"
             style={{ color: "#EDE8DF", opacity: 0.65 }}
           >
-            Not your average tourist trap. Bespoke itineraries crafted by true
-            local insiders.
+            {subheadline}
           </p>
         </motion.div>
 
@@ -144,7 +167,7 @@ export default function HeroSection() {
           animate={loaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 1.35, ease: "easeOut" }}
         >
-          <LandingButton>Check Your Travel Vibe</LandingButton>
+          <LandingButton>{ctaLabel}</LandingButton>
         </motion.div>
       </div>
 

@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { validateWebpUnder300kb } from "./validators";
 
 const post = defineType({
   name: "post",
@@ -28,7 +29,12 @@ const post = defineType({
       name: "mainImage",
       title: "Main Image",
       type: "image",
-      options: { hotspot: true },
+      description: "Upload .webp, maksimal 300KB.",
+      options: { hotspot: true, accept: "image/webp" },
+      validation: (Rule) =>
+        Rule.custom((value, context) =>
+          validateWebpUnder300kb(value, context),
+        ),
     }),
     defineField({
       name: "excerpt",

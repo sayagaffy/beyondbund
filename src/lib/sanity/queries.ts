@@ -1,5 +1,5 @@
 import { sanityClient } from "./client";
-import type { PostDetail, PostListItem } from "./types";
+import type { PostDetail, PostListItem, SiteSettings } from "./types";
 
 const POSTS_QUERY = `
   *[_type == "post"] | order(publishedAt desc) {
@@ -26,6 +26,41 @@ const POST_BY_SLUG_QUERY = `
   }
 `;
 
+const SITE_SETTINGS_QUERY = `
+  *[_type == "siteSettings"][0] {
+    _id,
+    contactEmail,
+    hero {
+      eyebrow,
+      headlineLine1,
+      headlineLine2,
+      headlineLine2Italic,
+      subheadline,
+      ctaLabel,
+      backgroundImage
+    },
+    seo {
+      title,
+      description,
+      keywords,
+      ogTitle,
+      ogDescription,
+      ogImage,
+      twitterTitle,
+      twitterDescription,
+      twitterImage,
+      siteName,
+      siteUrl,
+      locale,
+      ogType,
+      twitterCard,
+      hreflang,
+      hreflangUrl,
+      schemaJson
+    }
+  }
+`;
+
 export async function fetchPosts(): Promise<PostListItem[]> {
   if (!sanityClient) {
     return [];
@@ -40,4 +75,11 @@ export async function fetchPostBySlug(
     return null;
   }
   return sanityClient.fetch<PostDetail | null>(POST_BY_SLUG_QUERY, { slug });
+}
+
+export async function fetchSiteSettings(): Promise<SiteSettings | null> {
+  if (!sanityClient) {
+    return null;
+  }
+  return sanityClient.fetch<SiteSettings | null>(SITE_SETTINGS_QUERY);
 }

@@ -22,5 +22,5 @@ export const urlForImage = (source: unknown) => {
   if (!builder || !source) {
     return null;
   }
-  return builder.image(source);
+  return builder.image(source).format("webp").quality(80);
 };

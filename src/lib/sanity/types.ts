@@ -30,3 +30,36 @@ export type PostListItem = {
 export type PostDetail = PostListItem & {
   body?: Array<unknown>;
 };
+
+export type SiteSettings = {
+  _id: string;
+  contactEmail?: string;
+  hero?: {
+    eyebrow?: string;
+    headlineLine1?: string;
+    headlineLine2?: string;
+    headlineLine2Italic?: boolean;
+    subheadline?: string;
+    ctaLabel?: string;
+    backgroundImage?: SanityImage;
+  };
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: SanityImage;
+    twitterTitle?: string;
+    twitterDescription?: string;
+    twitterImage?: SanityImage;
+    siteName?: string;
+    siteUrl?: string;
+    locale?: string;
+    ogType?: string;
+    twitterCard?: string;
+    hreflang?: string;
+    hreflangUrl?: string;
+    schemaJson?: string;
+  };
+};
