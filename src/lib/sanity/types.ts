@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "@portabletext/types";
+
 export type SanityImageAsset = {
   _ref?: string;
   _type?: string;
@@ -14,7 +16,7 @@ export type Author = {
   name?: string;
   slug?: { current?: string };
   image?: SanityImage;
-  bio?: Array<unknown>;
+  bio?: PortableTextBlock[];
 };
 
 export type PostListItem = {
@@ -28,7 +30,7 @@ export type PostListItem = {
 };
 
 export type PostDetail = PostListItem & {
-  body?: Array<unknown>;
+  body?: PortableTextBlock[];
 };
 
 export type SiteSettings = {
@@ -36,12 +38,21 @@ export type SiteSettings = {
   contactEmail?: string;
   hero?: {
     eyebrow?: string;
+    slides?: Array<{
+      eyebrow?: string;
+      headlineLine1?: string;
+      headlineLine2?: string;
+      headlineLine2Italic?: boolean;
+      subheadline?: string;
+      ctaLabel?: string;
+      backgroundImage?: SanityImage;
+    }>;
     headlineLine1?: string;
     headlineLine2?: string;
     headlineLine2Italic?: boolean;
     subheadline?: string;
     ctaLabel?: string;
-    backgroundImage?: SanityImage;
+    backgroundImages?: SanityImage[];
   };
   seo?: {
     title?: string;

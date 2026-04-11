@@ -32,12 +32,21 @@ const SITE_SETTINGS_QUERY = `
     contactEmail,
     hero {
       eyebrow,
+      slides[] {
+        eyebrow,
+        headlineLine1,
+        headlineLine2,
+        headlineLine2Italic,
+        subheadline,
+        ctaLabel,
+        backgroundImage
+      },
       headlineLine1,
       headlineLine2,
       headlineLine2Italic,
       subheadline,
       ctaLabel,
-      backgroundImage
+      backgroundImages
     },
     seo {
       title,

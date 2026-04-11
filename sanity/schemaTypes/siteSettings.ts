@@ -24,6 +24,71 @@ const siteSettings = defineType({
           type: "string",
         }),
         defineField({
+          name: "slides",
+          title: "Hero Slides",
+          type: "array",
+          description:
+            "Isi beberapa slide hero. Jika kosong, akan memakai fallback global/default.",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({
+                  name: "eyebrow",
+                  title: "Eyebrow",
+                  type: "string",
+                }),
+                defineField({
+                  name: "headlineLine1",
+                  title: "Headline Line 1",
+                  type: "string",
+                }),
+                defineField({
+                  name: "headlineLine2",
+                  title: "Headline Line 2",
+                  type: "string",
+                }),
+                defineField({
+                  name: "headlineLine2Italic",
+                  title: "Italicize Line 2",
+                  type: "boolean",
+                  initialValue: true,
+                }),
+                defineField({
+                  name: "subheadline",
+                  title: "Subheadline",
+                  type: "text",
+                  rows: 3,
+                }),
+                defineField({
+                  name: "ctaLabel",
+                  title: "CTA Label",
+                  type: "string",
+                }),
+                defineField({
+                  name: "backgroundImage",
+                  title: "Background Image",
+                  type: "image",
+                  description:
+                    "Upload .webp, maksimal 300KB. Rekomendasi 2400x1600.",
+                  options: { hotspot: true, accept: "image/webp" },
+                  fields: [
+                    defineField({
+                      name: "alt",
+                      title: "Alt Text",
+                      type: "string",
+                    }),
+                  ],
+                  validation: (Rule) =>
+                    Rule.custom((value, context) =>
+                      validateWebpUnder300kb(value, context),
+                    ),
+                }),
+              ],
+            },
+          ],
+        }),
+        defineField({
           name: "headlineLine1",
           title: "Headline Line 1",
           type: "string",
@@ -51,22 +116,28 @@ const siteSettings = defineType({
           type: "string",
         }),
         defineField({
-          name: "backgroundImage",
-          title: "Background Image",
-          type: "image",
-          description: "Upload .webp, maksimal 300KB. Rekomendasi 2400x1600.",
-          options: { hotspot: true, accept: "image/webp" },
-          fields: [
-            defineField({
-              name: "alt",
-              title: "Alt Text",
-              type: "string",
-            }),
+          name: "backgroundImages",
+          title: "Background Images",
+          type: "array",
+          description:
+            "Upload beberapa gambar .webp (maks 300KB per gambar). Rekomendasi 2400x1600.",
+          of: [
+            {
+              type: "image",
+              options: { hotspot: true, accept: "image/webp" },
+              fields: [
+                defineField({
+                  name: "alt",
+                  title: "Alt Text",
+                  type: "string",
+                }),
+              ],
+              validation: (Rule) =>
+                Rule.custom((value, context) =>
+                  validateWebpUnder300kb(value, context),
+                ),
+            },
           ],
-          validation: (Rule) =>
-            Rule.custom((value, context) =>
-              validateWebpUnder300kb(value, context),
-            ),
         }),
       ],
     }),

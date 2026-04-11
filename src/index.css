@@ -160,6 +160,91 @@
     animation: kenBurns 8s ease-out forwards;
   }
 
+  .hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(184, 151, 90, 0.6);
+    color: #EDE8DF;
+    background: rgba(16, 13, 11, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: grid;
+    place-items: center;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    z-index: 20;
+  }
+
+  .hero-arrow:hover {
+    background: rgba(184, 151, 90, 0.2);
+    border-color: rgba(184, 151, 90, 0.9);
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .hero-arrow:active {
+    transform: translateY(-50%) scale(0.98);
+  }
+
+  .hero-arrow--left {
+    left: 4vw;
+  }
+
+  .hero-arrow--right {
+    right: 4vw;
+  }
+
+  .hero-arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .hero-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(237, 232, 223, 0.45);
+    background: transparent;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .hero-dot.is-active {
+    background: #B8975A;
+    border-color: #B8975A;
+    transform: scale(1.15);
+  }
+
+  @media (max-width: 768px) {
+    .hero-arrow {
+      width: 40px;
+      height: 40px;
+    }
+
+    .hero-arrow--left {
+      left: 16px;
+    }
+
+    .hero-arrow--right {
+      right: 16px;
+    }
+
+    .hero-dots {
+      bottom: 18px;
+    }
+  }
+
   /* Journey card hover gold border */
   .journey-card {
     position: relative;
@@ -229,4 +314,13 @@
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  .studio-bg {
+    background-color: #0f0f12;
+  }
+
+  .studio-shell {
+    min-height: 100vh;
+    background-color: #0f0f12;
   }

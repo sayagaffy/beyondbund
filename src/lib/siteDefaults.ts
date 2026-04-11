@@ -8,8 +8,44 @@ export const DEFAULT_HERO = {
   subheadline:
     "Not your average tourist trap. Bespoke itineraries crafted by true local insiders.",
   ctaLabel: "Check Your Travel Vibe",
-  backgroundImageUrl:
+  backgroundImages: [
     "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&q=80&fm=webp",
+  ],
+  slides: [
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&q=80&fm=webp",
+      eyebrow: "Private China Expeditions",
+      headlineLine1: "Discover the",
+      headlineLine2: "Unseen China.",
+      headlineLine2Italic: true,
+      subheadline:
+        "Not your average tourist trap. Bespoke itineraries crafted by true local insiders.",
+      ctaLabel: "Check Your Travel Vibe",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&q=80&fm=webp",
+      eyebrow: "Insider Access Only",
+      headlineLine1: "Beyond the",
+      headlineLine2: "Great Wall.",
+      headlineLine2Italic: true,
+      subheadline:
+        "Handpicked routes, private access, and a pace tailored entirely to you.",
+      ctaLabel: "Plan a Private Route",
+    },
+    {
+      imageUrl:
+        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=2000&q=80&fm=webp",
+      eyebrow: "Curated by Locals",
+      headlineLine1: "Travel with",
+      headlineLine2: "Quiet Confidence.",
+      headlineLine2Italic: true,
+      subheadline:
+        "Luxury, culture, and discretion across China’s most intimate places.",
+      ctaLabel: "Request the Insider Guide",
+    },
+  ],
 };
 
 export const DEFAULT_SEO = {
