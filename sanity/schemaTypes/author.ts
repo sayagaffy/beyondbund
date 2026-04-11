@@ -23,8 +23,8 @@ const author = defineType({
       name: "image",
       title: "Image",
       type: "image",
-      description: "Upload .webp, maksimal 300KB.",
-      options: { hotspot: true, accept: "image/webp" },
+      description: "Diunggah otomatis jadi WebP, maksimal 300KB.",
+      options: { hotspot: true },
       validation: (Rule) =>
         Rule.custom((value, context) =>
           validateWebpUnder300kb(value, context),

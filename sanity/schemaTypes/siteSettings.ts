@@ -70,8 +70,8 @@ const siteSettings = defineType({
                   title: "Background Image",
                   type: "image",
                   description:
-                    "Upload .webp, maksimal 300KB. Rekomendasi 2400x1600.",
-                  options: { hotspot: true, accept: "image/webp" },
+                    "Diunggah otomatis jadi WebP, maksimal 300KB. Rekomendasi 2400x1600.",
+                  options: { hotspot: true },
                   fields: [
                     defineField({
                       name: "alt",
@@ -120,11 +120,11 @@ const siteSettings = defineType({
           title: "Background Images",
           type: "array",
           description:
-            "Upload beberapa gambar .webp (maks 300KB per gambar). Rekomendasi 2400x1600.",
+            "Upload beberapa gambar (otomatis jadi WebP, maks 300KB per gambar). Rekomendasi 2400x1600.",
           of: [
             {
               type: "image",
-              options: { hotspot: true, accept: "image/webp" },
+              options: { hotspot: true },
               fields: [
                 defineField({
                   name: "alt",
@@ -179,8 +179,9 @@ const siteSettings = defineType({
           name: "ogImage",
           title: "OG Image",
           type: "image",
-          description: "Upload .webp, maksimal 300KB. Rekomendasi 2000x1200.",
-          options: { hotspot: true, accept: "image/webp" },
+          description:
+            "Diunggah otomatis jadi WebP, maksimal 300KB. Rekomendasi 2000x1200.",
+          options: { hotspot: true },
           fields: [
             defineField({
               name: "alt",
@@ -208,8 +209,9 @@ const siteSettings = defineType({
           name: "twitterImage",
           title: "Twitter Image",
           type: "image",
-          description: "Upload .webp, maksimal 300KB. Rekomendasi 2000x1200.",
-          options: { hotspot: true, accept: "image/webp" },
+          description:
+            "Diunggah otomatis jadi WebP, maksimal 300KB. Rekomendasi 2000x1200.",
+          options: { hotspot: true },
           fields: [
             defineField({
               name: "alt",

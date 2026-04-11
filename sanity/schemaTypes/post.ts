@@ -29,8 +29,8 @@ const post = defineType({
       name: "mainImage",
       title: "Main Image",
       type: "image",
-      description: "Upload .webp, maksimal 300KB.",
-      options: { hotspot: true, accept: "image/webp" },
+      description: "Diunggah otomatis jadi WebP, maksimal 300KB.",
+      options: { hotspot: true },
       validation: (Rule) =>
         Rule.custom((value, context) =>
           validateWebpUnder300kb(value, context),
@@ -38,7 +38,7 @@ const post = defineType({
     }),
     defineField({
       name: "excerpt",
-      title: "Excerpt",
+      title: "Ringkasan",
       type: "text",
       rows: 3,
       validation: (Rule) => Rule.max(300),

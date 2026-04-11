@@ -25,11 +25,6 @@ export async function validateWebpUnder300kb(
       return "Image asset not found.";
     }
 
-    const mimeType = asset.mimeType as string | undefined;
-    if (mimeType && mimeType !== "image/webp") {
-      return "Format gambar harus .webp.";
-    }
-
     const size = asset.size as number | undefined;
     if (typeof size === "number" && size > MAX_IMAGE_BYTES) {
       return "Ukuran gambar maksimal 300KB.";
